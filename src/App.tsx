@@ -1,10 +1,20 @@
+import { BrowserRouter, Route, Routes } from "react-router";
+import RootLayout from "./pages/layout";
+import SignInPage from "./pages/auth/sign-in/page";
+import SignUpPage from "./pages/auth/sign-up/page";
+import AuthLayout from "./pages/auth/layout";
+
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="p-4 bg-white shadow">
-        <h1 className="text-xl font-bold">Organizr</h1>
-      </header>
-      <main className="p-6"></main>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RootLayout />}>
+          <Route element={<AuthLayout />}>
+            <Route path="/auth/sign-in" element={<SignInPage />} />
+            <Route path="/auth/sign-up" element={<SignUpPage />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
