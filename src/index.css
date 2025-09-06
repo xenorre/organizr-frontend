@@ -1,15 +1,10 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@8..14,300;8..14,400;8..14,600;8..14,700&display=swap");
 
 /* src/app/globals.css
    Modern Trello/Asana inspired design tokens + base styles
    - Includes light/dark tokens, typography, spacing, radii, elevations, and component helpers.
 */
-
-/* ---------------------------
-   Font import (Inter variable)
-   You can change to your brand fonts. Inter is a modern UI font.
-   --------------------------- */
-@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@8..14,300;8..14,400;8..14,600;8..14,700&display=swap");
 
 /* ---------------------------
    Design tokens (CSS variables)
@@ -255,12 +250,11 @@ a:hover {
 
 /* Primary */
 .btn--primary {
-  background: linear-gradient(180deg, var(--brand-500), var(--brand-600));
-  color: var(--text-inverse);
-  box-shadow: 0 6px 18px rgba(46, 168, 255, 0.12);
+  background: var(--brand-500);
+  transition: background 0.4s var(--ease-in-out);
 }
 .btn--primary:hover {
-  transform: translateY(-2px);
+  background: var(--brand-400);
 }
 
 /* Ghost / neutral */
@@ -268,6 +262,11 @@ a:hover {
   background: transparent;
   color: var(--text-primary);
   border: 1px solid var(--border);
+}
+
+.btn--ghost:hover {
+  background: var(--glass-02);
+  transition: background 0.3s var(--ease-in-out);
 }
 
 /* Icon button small */
