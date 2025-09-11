@@ -6,7 +6,12 @@ export function PublicRoute({ children }: { children: React.ReactNode }) {
   const { useSession } = authClient;
   const { data: session, isPending } = useSession();
 
-  if (isPending) return <ImSpinner2 className="animate-spin size-24" />;
+  if (isPending)
+    return (
+      <div className="w-screen h-screen flex items-center justify-center m-auto">
+        <ImSpinner2 className="animate-spin size-24" />
+      </div>
+    );
   if (session?.user) return <Navigate to="/dashboard" replace />;
 
   return children;

@@ -6,7 +6,7 @@ export default function RootLayout() {
   return (
     <Providers>
       <div className="min-h-screen flex flex-col">
-        <main className="flex-1 flex items-center justify-center py-8">
+        <main>
           <Outlet />
         </main>
       </div>

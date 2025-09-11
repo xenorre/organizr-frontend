@@ -1,0 +1,14 @@
+/* Wymusza przezroczyste tło na overlay dialogu shadcn/ui */
+.dialog-overlay,
+[data-state="open"].fixed.inset-0.z-50,
+.fixed.inset-0.z-50.bg-background {
+  background: transparent !important;
+  /* Możesz też użyć: background: var(--bg-overlay, rgba(20,22,34,0.7)) !important; */
+}
+
+/* Wymusza brak białego tła na portalu/dialogu */
+[data-state="open"]
+  > .fixed.inset-0.z-50
+  > .z-50.flex.items-center.justify-center {
+  background: transparent !important;
+}
