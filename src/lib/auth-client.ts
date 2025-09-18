@@ -13,22 +13,22 @@ export const authClient = createAuthClient({
   baseURL: import.meta.env.VITE_API_URL, // The base URL of your auth server
 });
 
-export const signUp = async (formData: FormData) => {
-  const result = await authClient.signUp.email({
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
-    name: formData.get("name") as string,
-  });
+import type { AuthFormValues } from "@/hooks/useAuthFormTypes";
 
+export const signUp = async (data: AuthFormValues) => {
+  const result = await authClient.signUp.email({
+    email: data.email,
+    password: data.password,
+    name: data.name ?? "",
+  });
   return handleAuthResponse(result);
 };
 
-export const signIn = async (formData: FormData) => {
+export const signIn = async (data: AuthFormValues) => {
   const result = await authClient.signIn.email({
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
+    email: data.email,
+    password: data.password,
   });
-
   if (result.error) {
     return { success: false, error: result.error.message };
   }

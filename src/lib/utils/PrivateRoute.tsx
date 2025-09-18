@@ -1,17 +1,12 @@
 import { Navigate } from "react-router";
 import { authClient } from "@/lib/auth-client";
-import { ImSpinner2 } from "react-icons/im";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { useSession } = authClient;
   const { data: session, isPending } = useSession();
 
-  if (isPending)
-    return (
-      <div className="w-screen h-screen flex items-center justify-center m-auto">
-        <ImSpinner2 className="animate-spin size-24" />
-      </div>
-    );
+  if (isPending) return <LoadingSpinner type="large" />;
   if (!session?.user) return <Navigate to="/auth?mode=sign-in" replace />;
 
   return children;
